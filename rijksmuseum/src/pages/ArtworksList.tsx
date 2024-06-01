@@ -5,7 +5,7 @@ import { Artwork } from "../types/CustomTypes";
 
 const ArtworksList = () => {
   const [artworks, setArtworks] = useState<Artwork[] | null>(null);
-  const [artistName, setArtistName] = useState("hans%20bollongier");
+  const [artistName, setArtistName] = useState("floral%20still%20life");
 
   const getArtworks = async () => {
     try {
@@ -58,6 +58,7 @@ const ArtworksList = () => {
                 longTitle={artwork.longTitle}
                 webImage={artwork.webImage}
                 objectNumber={artwork.objectNumber}
+                key={artwork.objectNumber}
               />
             );
           })}

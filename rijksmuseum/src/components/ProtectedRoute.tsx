@@ -1,14 +1,21 @@
-import React from "react";
+import React, { ReactNode, useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
-function ProtectedRoute({ children, message }) {
+type ProtectedRouteProps = {
+  children: ReactNode;
+  message: string;
+};
+
+function ProtectedRoute({ children, message }: ProtectedRouteProps) {
   //   console.log("props", props);
-  const a = 2;
-  return <div>{a === 1 ? children : <NeedToLogin message={message} />}</div>;
+  const { user } = useContext(AuthContext);
+
+  return <div>{user ? children : <NeedToLogin message={message} />}</div>;
 }
 
 export default ProtectedRoute;
-
+//make a component out of the message -> reusable component
 export function NeedToLogin({ message }) {
   return (
     <div>

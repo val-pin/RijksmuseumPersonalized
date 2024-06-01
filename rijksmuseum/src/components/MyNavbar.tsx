@@ -5,29 +5,23 @@ import { Button } from "react-bootstrap";
 
 function MyNavbar() {
   //use this line to get the variables of context
-  const { user, login, logout } = useContext(AuthContext);
-  console.log("user :>> ", user);
-
-  const loginHandler = () => {
-    console.log("click");
-    login();
-    console.log("user :>> ", user);
-  };
-  const logoutHandler = () => {
+  const { user, logout } = useContext(AuthContext);
+  const handleLogout = () => {
     logout();
-    console.log("user :>> ", user);
   };
 
   return (
     <nav>
-      <Link to="artworks">Artworks</Link> | <Link to="about">About</Link> |{" "}
-      {user !== null ? (
-        <Button onClick={logoutHandler} variant="danger">
+      <Link to="artworks">Artworks</Link> |<Link to="about">About</Link> |
+      {/* <Link to="login">Login</Link> | */}{" "}
+      <Link to="registration">Registration</Link>|
+      {user ? (
+        <Button variant="danger" onClick={handleLogout}>
           Logout
         </Button>
       ) : (
-        <Button onClick={loginHandler}>Login</Button>
-      )}
+        <Link to="login">Login</Link>
+      )}{" "}
     </nav>
   );
 }

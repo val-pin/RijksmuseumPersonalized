@@ -60,8 +60,9 @@ function ArtworkDetails({}: Props) {
       <img
         src={artwork.webImage.url}
         alt={`picture of the paiting ${artwork.longTitle}`}
+        style={{ width: "300px", height: "400px" }}
       />
-      <ProtectedRoute message={"you need to login to see messagfews"}>
+      <ProtectedRoute message={"You need to login to see comments!"}>
         <CommentsSection />
       </ProtectedRoute>
     </div>

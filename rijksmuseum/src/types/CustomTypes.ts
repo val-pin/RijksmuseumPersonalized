@@ -1,6 +1,9 @@
 export type UserType = {
   email: string;
+  userId: string;
 };
+
+export type Message = string;
 
 export type Artwork = {
   id: string;

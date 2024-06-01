@@ -15,16 +15,24 @@ import ErrorPage from "./pages/ErrorPage";
 import { AuthContextProvider } from "./context/AuthContext";
 import SecretPage from "./pages/SecretPage";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Registration from "./pages/Registration";
+import { app, auth } from "./config/firebaseConfig";
 
 function App() {
   // const [count, setCount] = useState(0)
-
+  console.log("app : ", app);
+  console.log("current user in Firebase Server:::s: ", auth.currentUser);
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Root />}>
+        <Route index element={<Home />} />
         <Route path="artworks" element={<ArtworksList />} />
         <Route path="artworks/:objectNumber" element={<ArtworkDetails />} />
         <Route path="about" element={<About />} />
+        <Route path="login" element={<Login />} />
+        <Route path="registration" element={<Registration />} />
         <Route
           path="secretPage"
           element={
@@ -41,9 +49,12 @@ function App() {
   return (
     <>
       <div>
-        <h1>Rijksmuseum Amsterdam - browse the selection</h1>
+        <h1>Rijksmuseum Amsterdam - browse the collection</h1>
         {/* <ArtworksList/> */}
+
+        {/* <AuthContextProvider> */}
         <RouterProvider router={router} />
+        {/* </AuthContextProvider> */}
       </div>
     </>
   );
