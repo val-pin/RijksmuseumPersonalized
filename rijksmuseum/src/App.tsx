@@ -41,6 +41,14 @@ function App() {
             </ProtectedRoute>
           }
         />
+        {/* <Route
+          path="commentsSection"
+          element={
+            <ProtectedRoute message={"you need to login to see the secret"}>
+              <CommentsSection />
+            </ProtectedRoute>
+          }
+        /> */}
         <Route path="*" element={<ErrorPage />} />
       </Route>
     )
@@ -49,7 +57,7 @@ function App() {
   return (
     <>
       <div>
-        <h1>Rijksmuseum Amsterdam - browse the collection</h1>
+        <h1>Rijksmuseum Amsterdam - browse the (floral) collection</h1>
         {/* <ArtworksList/> */}
 
         {/* <AuthContextProvider> */}

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, MouseEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import ArtworkCard from "../components/ArtworkCard";
 import { Artwork } from "../types/CustomTypes";
@@ -40,8 +40,9 @@ const ArtworksList = () => {
 
   return (
     <>
-      <input type="text" onChange={handleInputChange} />
-
+      <div style={{ marginBottom: "1rem" }}>
+        <input type="text" onChange={handleInputChange} />
+      </div>
       {/* <label htmlFor="vincent">vincent</label>
       <input
         type="checkbox"

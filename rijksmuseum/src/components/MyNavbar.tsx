@@ -12,9 +12,9 @@ function MyNavbar() {
 
   return (
     <nav>
-      <Link to="artworks">Artworks</Link> |<Link to="about">About</Link> |
+      <Link to="artworks">Artworks</Link> | <Link to="about">About</Link> |
       {/* <Link to="login">Login</Link> | */}{" "}
-      <Link to="registration">Registration</Link>|
+      <Link to="registration">Registration</Link> |{" "}
       {user ? (
         <Button variant="danger" onClick={handleLogout}>
           Logout

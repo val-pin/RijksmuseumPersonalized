@@ -5,6 +5,7 @@ import { AuthContext } from "../context/AuthContext";
 import CommentsSection from "../components/CommentsSection";
 import ProtectedRoute from "../components/ProtectedRoute";
 import ErrorPage from "./ErrorPage";
+import { Button } from "react-bootstrap";
 // import CommentsSection from "../components/CommentsSection";
 
 type Props = {};
@@ -19,6 +20,8 @@ function ArtworkDetails({}: Props) {
   console.log("objectNumber :>> ", objectNumber);
 
   const [artwork, setArtwork] = useState<ArtObjectType | null>(null);
+
+  const [scale, setScale] = useState<1 | 5>(5);
 
   const fetchArtworkDetails = async () => {
     try {
@@ -48,7 +51,7 @@ function ArtworkDetails({}: Props) {
     return <h4>..loading..</h4>;
   }
   return (
-    <div>
+    <div style={{ marginBottom: "1rem" }}>
       <h4>{artwork.label.makerLine}:</h4> <h4>{artwork.title}</h4>
       {/* <p>Materials: {artwork.materials}</p> */}
       <p>{artwork.plaqueDescriptionEnglish}</p>
@@ -60,9 +63,20 @@ function ArtworkDetails({}: Props) {
       <img
         src={artwork.webImage.url}
         alt={`picture of the paiting ${artwork.longTitle}`}
-        style={{ width: "300px", height: "400px" }}
+        // style={{ width: "300px", height: "400px" }}
+        height={artwork.webImage.height / scale}
+        width={artwork.webImage.width / scale}
       />
+      <div style={{ marginBottom: "1rem" }}>
+        <Button
+          variant="info"
+          onClick={() => setScale((s) => (s === 1 ? 5 : 1))}
+        >
+          🔎
+        </Button>
+      </div>
       <ProtectedRoute message={"You need to login to see comments!"}>
+        {/* pass the object number as props to CommentsSection*/}
         <CommentsSection />
       </ProtectedRoute>
     </div>
